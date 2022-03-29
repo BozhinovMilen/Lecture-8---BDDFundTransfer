@@ -34,6 +34,14 @@ Scenario: Account is overdrawn past the overdraft limit
       And he Submits request for Fund Transfer
       Then ensure a transaction failure message "Transfer failed!! account cannot be overdrawn" is displayed
 
+  @regression
+  Scenario: Account is overdrawn past the overdraft limit
+    Given the user is on Fund Transfer Page
+    When he enters "Tim" as payee name
+    And he enters "1000000" as amount
+    And he Submits request for Fund Transfer
+    Then ensure a transaction failure message "Transfer failed!! account cannot be overdrawn" is displayed
+
 
 @fundTransferTest @regression
 Scenario Outline: datadriven negative
